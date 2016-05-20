@@ -19,3 +19,7 @@ oslobysykkel.getAvailability(function(result) { ... });
 // Get availability data currently available for one single station
 oslobysykkel.getAvailabilityByStationId(stationId, function(result) { ... });
 ```
+
+## Git
+git@github.com:willosof/oslobysykkel.git
+https://github.com/willosof/oslobysykkel
