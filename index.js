@@ -32,7 +32,6 @@ var getAvailabilityByStationId = function(id, idcb) {
 			}
 
 		}
-	//	console.log("ouch",avres);
 	})
 }
 
