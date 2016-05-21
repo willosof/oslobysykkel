@@ -4,23 +4,20 @@
 [![Build Status](https://travis-ci.org/willosof/oslobysykkel.svg?branch=master)](https://travis-ci.org/willosof/oslobysykkel)
 
 ## Features
-* getAvailability(result_cb)
+* **getStations(result_cb)**
+List all stations in the system. Here you'll get the id's you need to make sense of getAvailability() and getAvailabilityByStationId()
 
+* **getAvailability(result_cb)**
 Get availability information on all stations in the oslobysykkel system.
 
-* getAvailabilityByStationId(id, result_cb)
-
+* **getAvailabilityByStationId(id, result_cb)**
 Using the id you find in getAvailability(), you can narrow your request down using this function.
+*Notice: for now this function is just a client side processed version of getAvailability()*
 
-**Be aware:** for now this function is just a client side processed version of getAvailability()
-
-* getStations(result_cb)
-
-List all stations in the system. Here you'll get the id's you need to make sense of getAvailability() and getAvailabilityByStationId()
 
 ### Getting Started
 
-In node.js:
+In Node.js:
 
 ```
 npm install oslobysykkel
@@ -29,20 +26,34 @@ npm install oslobysykkel
 ```javascript
 var oslobysykkel = require('oslobysykkel');
 
-// Get all availability data currently available from oslobysykkel/sharebike api
-oslobysykkel.getAvailability(function(result) { ... });
-
-// Get availability data currently available for one single station
-oslobysykkel.getAvailabilityByStationId(stationId, function(result) { ... });
-
 // Get all stations and their IDs
-oslobysykkel.getStations(function(result) { ... });
+oslobysykkel.getStations(response => {
+	console.log(response);
+});
+
+// Get current availability data
+oslobysykkel.getAvailability(response => {
+	console.log(response);
+});
+
+// Get availability data for one specific station
+var stationId = 26;
+oslobysykkel.getAvailabilityByStationId(stationId, response => {
+	console.log(response);
+});
+
 ```
 
 ### Git
 * [https://github.com/willosof/oslobysykkel](https://github.com/willosof/oslobysykkel)
-* [git@github.com:willosof/oslobysykkel.git](git@github.com:willosof/oslobysykkel.git)
+* `git@github.com:willosof/oslobysykkel.git`
 
 
-### Future research:
+### Data Sources
+* https://oslobysykkel.no/api/v1/stations/availability
+* https://oslobysykkel.no/api/v1/stations
+
+### Other
+
+#### A link that shows where new stations will appear:
 * https://oslobysykkel.no/api/internal/stations
