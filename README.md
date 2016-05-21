@@ -1,6 +1,13 @@
 [![Build Status](https://travis-ci.org/willosof/oslobysykkel.svg?branch=master)](https://travis-ci.org/willosof/oslobysykkel)
 [![Downloads](https://img.shields.io/npm/dm/oslobysykkel.svg)](https://npmjs.com/oslobysykkel)
 
+# TESTING
+[![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+  [![Linux Build][travis-image]][travis-url]
+  [![Windows Build][appveyor-image]][appveyor-url]
+  [![Test Coverage][coveralls-image]][coveralls-url]
+
 ## Features
 * getAvailability(result_cb)
 Get availability information on all stations in the oslobysykkel system.
