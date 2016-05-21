@@ -3,6 +3,9 @@
 [![Dependency Status](https://david-dm.org/willosof/oslobysykkel.svg)](https://david-dm.org/willosof/oslobysykkel)
 [![Build Status](https://travis-ci.org/willosof/oslobysykkel.svg?branch=master)](https://travis-ci.org/willosof/oslobysykkel)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/willosof/oslobysykkel.svg?style=plastic)](https://github.com/willosof/oslobysykkel/issues)
+[![GitHub forks](https://img.shields.io/github/forks/willosof/oslobysykkel.svg?style=plastic)](https://github.com/willosof/oslobysykkel/network)
+[![GitHub stars](https://img.shields.io/github/stars/willosof/oslobysykkel.svg?style=plastic)](https://github.com/willosof/oslobysykkel/stargazers)
 
 ## Features
 * **getStations(result_cb)**
