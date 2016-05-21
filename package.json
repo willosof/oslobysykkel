@@ -1,6 +1,6 @@
 {
   "name": "oslobysykkel",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Unofficial API for the latest city bike system in Oslo, Norway",
   "main": "index.js",
   "scripts": {
