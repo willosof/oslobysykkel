@@ -5,14 +5,18 @@
 
 ## Features
 * getAvailability(result_cb)
-  Get availability information on all stations in the oslobysykkel system.
+
+Get availability information on all stations in the oslobysykkel system.
 
 * getAvailabilityByStationId(id, result_cb)
-  Using the id you find in getAvailability(), you can narrow your request down using this function.
-  **Be aware:** for now this function is just a client side processed version of getAvailability()
+
+Using the id you find in getAvailability(), you can narrow your request down using this function.
+
+**Be aware:** for now this function is just a client side processed version of getAvailability()
 
 * getStations(result_cb)
-  List all stations in the system. Here you'll get the id's you need to make sense of getAvailability() and getAvailabilityByStationId()
+
+List all stations in the system. Here you'll get the id's you need to make sense of getAvailability() and getAvailabilityByStationId()
 
 ### Getting Started
 
