@@ -54,6 +54,8 @@ oslobysykkel.getAvailabilityByStationId(stationId, response => {
 * https://oslobysykkel.no/api/v1/stations
 
 ### Other
-
 #### A link that shows where new stations will appear:
-* https://oslobysykkel.no/api/internal/stations
+* https://oslobysykkel.no/api/internal/stations (ready=false is the coming ones)
+
+### Author
+William Viker <<william.viker@gmail.com>>
