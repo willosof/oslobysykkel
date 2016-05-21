@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/willosof/oslobysykkel.svg?branch=master)](https://travis-ci.org/willosof/oslobysykkel)
+
 ## Features
 * getAvailability(result_cb)
 Get availability information on all stations in the oslobysykkel system.
