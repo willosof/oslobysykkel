@@ -7,14 +7,13 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 */
 
 var got = require("got");
-var JSON = require("JSON");
 
 var v1 = function(options) {}
 
 var getAvailability = function(cb) {
-	got("https://oslobysykkel.no/api/v1/stations/availability")
+	got("https://oslobysykkel.no/api/v1/stations/availability", { json: true })
 		.then(response => {
-			cb({ error: 0, result: JSON.parse(response.body) });
+			cb({ error: 0, result: response.body });
 		})
 		.catch(error => {
 			cb({ error: 1, errstr: error.response.body });
@@ -30,12 +29,24 @@ var getAvailabilityByStationId = function(id, idcb) {
 					return;
 				}
 			}
-
 		}
 	})
 }
 
+var getStations = function(cb) {
+	got("https://oslobysykkel.no/api/v1/stations", { json: true })
+		.then(response => {
+			cb({ error: 0, result: response.body });
+		})
+		.catch(error => {
+			cb({ error: 1, errstr: error.response.body });
+		})
+}
+
 var oslobysykkel = v1;
+
 oslobysykkel.getAvailability = getAvailability;
 oslobysykkel.getAvailabilityByStationId = getAvailabilityByStationId;
+oslobysykkel.getStations = getStations;
+
 module.exports = oslobysykkel;
