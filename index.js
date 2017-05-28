@@ -10,8 +10,11 @@ var got = require("got");
 
 var v1 = function(options) {}
 
-var getAvailability = function(cb) {
-	got("https://oslobysykkel.no/api/v1/stations/availability", { json: true })
+var getAvailability = function(clientId, cb) {
+	got("https://oslobysykkel.no/api/v1/stations/availability", { 
+		json: true,
+		headers: { 'Client-Identifier' : clientId }
+	})
 		.then(response => {
 			cb({ error: 0, result: response.body });
 		})
@@ -20,21 +23,28 @@ var getAvailability = function(cb) {
 		})
 }
 
-var getAvailabilityByStationId = function(id, idcb) {
-	getAvailability(function(avres) {
+var getAvailabilityByStationId = function(id, clientId, idcb) {
+	getAvailability(clientId, avres => {
 		if (avres.error == 0) {
 			for (var idx in avres.result.stations) {
 				if (avres.result.stations[idx].id == id) {
 					idcb(avres.result.stations[idx]);
 					return;
 				}
-			}
-		}
-	})
+			};
+			idcb({error: 2, result: "No station with ID " + id + " found"})
+		} else (
+			idcb(avres)
+		);
+	});
 }
 
-var getStations = function(cb) {
-	got("https://oslobysykkel.no/api/v1/stations", { json: true })
+
+var getStations = function(clientId, cb) {
+	got("https://oslobysykkel.no/api/v1/stations", { 
+		json: true,
+		headers: { 'Client-Identifier' : clientId }
+	})
 		.then(response => {
 			cb({ error: 0, result: response.body });
 		})

@@ -21,6 +21,8 @@ Using the id you find in getAvailability(), you can narrow your request down usi
 
 ### Getting Started
 
+First, you must register at https://developer.oslobysykkel.no/. Follow the instructions on the page to get a clientId
+
 In Node.js:
 
 ```
@@ -29,20 +31,21 @@ npm install oslobysykkel
 
 ```javascript
 var oslobysykkel = require('oslobysykkel');
+var clientId = '{Fill inn clientId}'
 
 // Get all stations and their IDs
-oslobysykkel.getStations(response => {
+oslobysykkel.getStations(clientId, response => {
 	console.log(response);
 });
 
 // Get current availability data
-oslobysykkel.getAvailability(response => {
+oslobysykkel.getAvailability(clientId, response => {
 	console.log(response);
 });
 
 // Get availability data for one specific station
-var stationId = 26;
-oslobysykkel.getAvailabilityByStationId(stationId, response => {
+var stationId = 178;
+oslobysykkel.getAvailabilityByStationId(clientId, stationId, response => {
 	console.log(response);
 });
 
