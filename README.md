@@ -68,7 +68,7 @@ obs.getAvailabilityByStationId(stationId, response => {
 William Viker <<william.viker@gmail.com>>
 
 ### Contributors
-[https://github.com/igundersen](Marius Gundersen) - Implemented clientId in 2.0
+[Marius Gundersen](https://github.com/igundersen) - Implemented clientId in 2.0
 
 ### Changelog
 * 1.2.6 Stable version for 2016 API
