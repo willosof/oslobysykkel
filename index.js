@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2016, William Viker <william.viker@gmail.com>
+Copyright (c) 2016-2017, William Viker <william.viker@gmail.com>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
@@ -8,55 +8,54 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 var got = require("got");
 
-var v1 = function(options) {}
+var v1 = function(clientId) {
+	var self = this;
+	self.clientId = clientId;
 
-var getAvailability = function(clientId, cb) {
-	got("https://oslobysykkel.no/api/v1/stations/availability", { 
-		json: true,
-		headers: { 'Client-Identifier' : clientId }
-	})
-		.then(response => {
-			cb({ error: 0, result: response.body });
+	self.getAvailability = function(cb) {
+		got("https://oslobysykkel.no/api/v1/stations/availability", {
+			json: true,
+			headers: { 'Client-Identifier' : self.clientId }
 		})
-		.catch(error => {
-			cb({ error: 1, errstr: error.response.body });
-		})
-}
+			.then(response => {
+				cb({ error: 0, result: response.body });
+			})
+			.catch(error => {
+				cb({ error: 1, errstr: error.response.body });
+			})
+	}
 
-var getAvailabilityByStationId = function(id, clientId, idcb) {
-	getAvailability(clientId, avres => {
-		if (avres.error == 0) {
-			for (var idx in avres.result.stations) {
-				if (avres.result.stations[idx].id == id) {
-					idcb(avres.result.stations[idx]);
-					return;
-				}
-			};
-			idcb({error: 2, result: "No station with ID " + id + " found"})
-		} else (
-			idcb(avres)
-		);
-	});
-}
+	self.getAvailabilityByStationId = function(id, idcb) {
+		self.getAvailability(avres => {
+			if (avres.error == 0) {
+				for (var idx in avres.result.stations) {
+					if (avres.result.stations[idx].id == id) {
+						idcb(avres.result.stations[idx]);
+						return;
+					}
+				};
+				idcb({error: 2, result: "No station with ID " + id + " found"})
+			} else (
+				idcb(avres)
+			);
+		});
+	}
 
+	self.getStations = function(cb) {
+		got("https://oslobysykkel.no/api/v1/stations", {
+			json: true,
+			headers: { 'Client-Identifier' : self.clientId }
+		})
+			.then(response => {
+				cb({ error: 0, result: response.body });
+			})
+			.catch(error => {
+				cb({ error: 1, errstr: error.response.body });
+			})
+	}
 
-var getStations = function(clientId, cb) {
-	got("https://oslobysykkel.no/api/v1/stations", { 
-		json: true,
-		headers: { 'Client-Identifier' : clientId }
-	})
-		.then(response => {
-			cb({ error: 0, result: response.body });
-		})
-		.catch(error => {
-			cb({ error: 1, errstr: error.response.body });
-		})
 }
 
 var oslobysykkel = v1;
-
-oslobysykkel.getAvailability = getAvailability;
-oslobysykkel.getAvailabilityByStationId = getAvailabilityByStationId;
-oslobysykkel.getStations = getStations;
 
 module.exports = oslobysykkel;

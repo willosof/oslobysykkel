@@ -31,21 +31,21 @@ npm install oslobysykkel
 
 ```javascript
 var oslobysykkel = require('oslobysykkel');
-var clientId = '{Fill inn clientId}'
+var obs = new oslobysykkel('{Your API clientId}');
 
 // Get all stations and their IDs
-oslobysykkel.getStations(clientId, response => {
+obs.getStations(response => {
 	console.log(response);
 });
 
 // Get current availability data
-oslobysykkel.getAvailability(clientId, response => {
+obs.getAvailability(response => {
 	console.log(response);
 });
 
 // Get availability data for one specific station
 var stationId = 178;
-oslobysykkel.getAvailabilityByStationId(clientId, stationId, response => {
+obs.getAvailabilityByStationId(stationId, response => {
 	console.log(response);
 });
 
@@ -66,3 +66,10 @@ oslobysykkel.getAvailabilityByStationId(clientId, stationId, response => {
 
 ### Author
 William Viker <<william.viker@gmail.com>>
+
+### Contributors
+[https://github.com/igundersen](Marius Gundersen) - Implemented clientId in 2.0
+
+### Changelog
+* 1.2.6 Stable version for 2016 API
+* 2.0.0 Implemented clientId required in 2017 API
